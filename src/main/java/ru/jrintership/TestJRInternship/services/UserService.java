@@ -11,9 +11,9 @@ public interface UserService {
 
     List<User> findAllUsers();
 
-    User findById(Long id);
+    User findById(Integer id);
 
-    void deleteUser(Long id);
+    void deleteUser(Integer id);
 
     void saveUser(User user);
 

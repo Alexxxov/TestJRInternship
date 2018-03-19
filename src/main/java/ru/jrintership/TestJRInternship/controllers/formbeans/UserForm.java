@@ -43,7 +43,7 @@ public class UserForm {
         this.age = age;
     }
 
-    public boolean isAdmin() {
+    public boolean getIsAdmin() {
         return isAdmin;
     }
 

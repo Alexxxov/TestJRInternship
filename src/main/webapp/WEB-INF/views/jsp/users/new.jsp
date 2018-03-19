@@ -7,6 +7,7 @@
 --%>
 <%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,25 +15,25 @@
 </head>
 <jsp:include page="../fragments/header.jsp" />
 <body>
-<div class="container">
+<div class="container center-block">
     <h2>New user</h2>
-    <form class="form-horizontal" action="/users/save" method="post">
+    <form:form class="form-horizontal" modelAttribute="userForm" action="/users" method="post">
         <div class="form-group">
-            <label class="control-label col-sm-2" for="name">Name: </label>
+            <form:label path="name" class="control-label col-sm-2">Name: </form:label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" placeholder="Enter your name..." value="${user.name}">
+                <form:input path="name" type="text" class="form-control" placeholder="Enter your name..."/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="age">Age: </label>
+            <form:label path="age" class="control-label col-sm-2">Age: </form:label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" id="age" placeholder="Enter your age..." value="${user.age}">
+                <form:input path="age" type="number" class="form-control" placeholder="Enter your age..."/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
-                    <label><input type="checkbox" value="${user.isAdmin}">Are you Admin?</label>
+                    <form:label path="isAdmin"><form:checkbox path="isAdmin"/>Are you Admin?</form:label>
                 </div>
             </div>
         </div>
@@ -41,7 +42,7 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </div>
         </div>
-    </form>
+    </form:form>
 </div>
 <jsp:include page="../fragments/footer.jsp" />
 </body>
