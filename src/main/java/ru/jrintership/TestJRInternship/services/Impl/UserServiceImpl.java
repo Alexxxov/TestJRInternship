@@ -1,6 +1,9 @@
 package ru.jrintership.TestJRInternship.services.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.jrintership.TestJRInternship.model.User;
 import ru.jrintership.TestJRInternship.repositories.UserRepository;
@@ -12,7 +15,7 @@ import java.util.List;
 /**
  * Created by Admin on 04.03.2018.
  */
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
@@ -22,15 +25,15 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    //TODO remove test
-    @PostConstruct
-    void init(){
-        User user = new User();
-        user.setName("Ivan");
-        user.setAge(34);
-        user.setAdmin(true);
-        userRepository.save(user);
-    }
+//    //TODO remove test
+//    @PostConstruct
+//    void init(){
+//        User user = new User();
+//        user.setName("Ivan");
+//        user.setAge(34);
+//        user.setAdmin(true);
+//        userRepository.save(user);
+//    }
 
     @Override
     public List<User> findAllUsers() {
@@ -38,7 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(Long id) {
+    public User findById(Long id) {
         return userRepository.getOne(id);
     }
 
@@ -50,5 +53,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userRepository.save(user);
+    }
+
+    public Page<User> getUsersPage(int pageNumber, int pageSize) {
+        PageRequest request =
+                new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "name");
+        return userRepository.findAll(request);
     }
 }

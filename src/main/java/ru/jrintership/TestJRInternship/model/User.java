@@ -15,19 +15,20 @@ public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name")
-    @NotBlank
     private String name;
 
     @Column(name = "age")
-    @Range(max = 150)
     private int age;
 
-    @Column(name = "isAdmin")
+    @Column(name = "is_admin")
     private boolean isAdmin;
 
+    public Long getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -37,7 +38,7 @@ public class User {
         return age;
     }
 
-    public boolean isAdmin() {
+    public boolean getIsAdmin() {
         return isAdmin;
     }
 
