@@ -52,6 +52,12 @@ public class UserController {
         return "redirect:/users";
     }
 
+    @RequestMapping(value = "/{userId}/delete", method = RequestMethod.POST)
+    public String deleteUser(@PathVariable Integer userId, RedirectAttributes redirectAttributes){
+        userService.deleteUser(userId);
+        return "redirect:/users";
+    }
+
     private User createUser(UserForm userForm) {
         User user = new User();
         user.setName(userForm.getName());
@@ -59,21 +65,5 @@ public class UserController {
         user.setAdmin(userForm.getIsAdmin());
         return user;
     }
-
-//    @RequestMapping(value = "/pages/{pageNumber}", method = RequestMethod.GET)
-//    public String getRunbookPage(@PathVariable Integer pageNumber, Model model) {
-//        Page<User> page = userService.getUsersPage(pageNumber, 10);
-//
-//        int current = page.getNumber() + 1;
-//        int begin = Math.max(1, current - 5);
-//        int end = Math.min(begin + 10, page.getTotalPages());
-//
-//        model.addAttribute("deploymentLog", page);
-//        model.addAttribute("beginIndex", begin);
-//        model.addAttribute("endIndex", end);
-//        model.addAttribute("currentIndex", current);
-//
-//        return "users/index";
-//    }
 
 }

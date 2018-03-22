@@ -6,12 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Add new user</title>
+    <title>Новый пользователь</title>
 </head>
 <jsp:include page="../fragments/header.jsp" />
 <body>
@@ -19,27 +20,27 @@
     <h2>New user</h2>
     <form:form class="form-horizontal" modelAttribute="userForm" action="/users" method="post">
         <div class="form-group">
-            <form:label path="name" class="control-label col-sm-2">Name: </form:label>
+            <form:label path="name" class="control-label col-sm-2">Имя: </form:label>
             <div class="col-sm-10">
-                <form:input path="name" type="text" class="form-control" placeholder="Enter your name..."/>
+                <form:input path="name" type="text" class="form-control" placeholder="Имя пользователья"/>
             </div>
         </div>
         <div class="form-group">
-            <form:label path="age" class="control-label col-sm-2">Age: </form:label>
+            <form:label path="age" class="control-label col-sm-2">Возраст: </form:label>
             <div class="col-sm-10">
-                <form:input path="age" type="number" class="form-control" placeholder="Enter your age..."/>
+                <form:input path="age" type="number" class="form-control" placeholder="Возраст пользователя"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
-                    <form:label path="isAdmin"><form:checkbox path="isAdmin"/>Are you Admin?</form:label>
+                    <form:label path="isAdmin"><form:checkbox path="isAdmin"/>Является ли пользователь администратором?</form:label>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default">Создать</button>
             </div>
         </div>
     </form:form>
