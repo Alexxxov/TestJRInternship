@@ -49,13 +49,23 @@ public class UserController {
                            RedirectAttributes redirectAttributes) {
         User user = createUser(userForm);
         userService.saveUser(user);
+        redirectAttributes.addFlashAttribute("alert-success", "User added successfully!");
         return "redirect:/users";
     }
 
-    @RequestMapping(value = "/{userId}/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/{userId}/delete", method = RequestMethod.GET)
     public String deleteUser(@PathVariable Integer userId, RedirectAttributes redirectAttributes){
         userService.deleteUser(userId);
+        redirectAttributes.addFlashAttribute("alert-success", "User deleted succeessfully!");
         return "redirect:/users";
+    }
+
+    @RequestMapping(value = "/{userId}/update", method = RequestMethod.GET)
+    public String updateUser(@PathVariable Integer userId, Model model, RedirectAttributes redirectAttributes) {
+        User user = userService.findById(userId);
+        UserForm userForm = new UserForm(user);
+        model.addAttribute("userForm", userForm);
+        return "users/new";
     }
 
     private User createUser(UserForm userForm) {

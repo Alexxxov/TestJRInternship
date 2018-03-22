@@ -18,7 +18,7 @@
         <div class="panel panel-default">
             <div class="panel-heading panel-title">Список пользователей</div>
                 <div class="panel-body">
-                    <table id="userTable" class="table table-striped data-table" data-sort-strategy="desc" data-sort-column="0">
+                    <table id="userTable" class="table table-bordered table-striped table-hover data-table" data-sort-strategy="desc" data-sort-column="0">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -29,17 +29,16 @@
                             </tr>
                         </thead>
                             <c:forEach var="user" items="${users}">
-                                <spring:url value="/users/${user.id}" var="userUrl" />
                                 <spring:url value="/users/${user.id}/delete" var="deleteUrl" />
                                 <spring:url value="/users/${user.id}/update" var="updateUrl" />
                                 <tr>
-                                    <td><a href="${userUrl}">${user.id}</a></td>
+                                    <td>${user.id}</td>
                                     <td>${user.name}</td>
                                     <td>${user.age}</td>
                                     <td>${user.isAdmin}</td>
                                     <td>
-                                        <button class="btn btn-primary" href="${updateUrl}">Изменить</button>
-                                        <button class="btn btn-danger" href="${deleteUrl}">Удалить</button>
+                                        <a class="btn btn-primary" href="${updateUrl}">Изменить</a>
+                                        <a class="btn btn-danger" href="${deleteUrl}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удалить</a>
                                     </td>
                                 </tr>
                             </c:forEach>

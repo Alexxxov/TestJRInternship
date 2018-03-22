@@ -1,5 +1,5 @@
 $(document).ready( function () {
-    $('.data-table').dataTable({
+    $('.data-table').DataTable({
         language: {
             "processing": "Подождите...",
                 "search": "Поиск:",
@@ -21,6 +21,7 @@ $(document).ready( function () {
                 "sortAscending": ": активировать для сортировки столбца по возрастанию",
                     "sortDescending": ": активировать для сортировки столбца по убыванию"
             }
-        }
+        },
+        order: [[0, "desc"]]
     });
 } );

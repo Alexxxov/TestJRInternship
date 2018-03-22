@@ -1,6 +1,7 @@
 package ru.jrintership.TestJRInternship.controllers.formbeans;
 
 import org.hibernate.validator.constraints.Range;
+import ru.jrintership.TestJRInternship.model.User;
 
 import javax.validation.constraints.NotBlank;
 
@@ -19,6 +20,12 @@ public class UserForm {
 
     public UserForm(){
 
+    }
+
+    public UserForm(User user) {
+        this.name = user.getName() != null ? user.getName() : null;
+        this.age = user.getAge();
+        this.isAdmin = user.getIsAdmin();
     }
 
     public UserForm(String name, int age, boolean isAdmin) {
