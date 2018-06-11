@@ -10,10 +10,12 @@
 <head>
     <title>Hello</title>
 </head>
+<jsp:include page="../fragments/header.jsp" />
 <body>
-<div class="page-header">
-    <h4 class="media-heading">Hello, kind users!</h4>
-    <a class="btn btn-link" href="/users">Go to users list</a>
-</div>
-    </body>
+    <div class="container center-block">
+        <h4 class="media-heading">Hello, kind users! This is an enrolment task for Javarush internship</h4>
+        <a class="btn btn-link" href="/books">Go to books list</a>
+    </div>
+<jsp:include page="../fragments/footer.jsp" />
+</body>
 </html>

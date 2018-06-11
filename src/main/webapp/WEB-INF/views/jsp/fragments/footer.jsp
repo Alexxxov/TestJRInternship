@@ -11,7 +11,7 @@
 
 <spring:url value="/resources/core/js/jquery-3.2.1.min.js" var="jQueryDataTableJs" />
 <spring:url value="/resources/core/js/jquery.dataTables.js" var="jQueryDataTable" />
-<spring:url value="/resources/core/js/userTable.js" var="dataTablesJs" />
+<spring:url value="/resources/core/js/bookTable.js" var="dataTablesJs" />
 <spring:url value="/resources/core/js/bootstrap.min.js"
             var="bootstrapJs" />
 
